@@ -1,12 +1,15 @@
 package com.input_output;
 
-import java.io.File;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Date;
 
 
 public class InputOutput {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //Task1 Write a Java program to get a list of all file/directory names from the given.
         System.out.println("Printing content of directory: ");
@@ -41,9 +44,16 @@ public class InputOutput {
             System.out.println("Not equal: " + file1.compareTo(file2));
         }
         //Task7 Write a Java program to get last modified time of a file.
-        Date date = new Date(file2.lastModified());
+        Date date = new Date(file1.lastModified());
         System.out.println("Last modified time: " + date);
-
+        //Task8  Write Java program to read input from java console.
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println(reader.readLine());
+        //Task9 Write a Java program to get file size in bytes, kb, mb.
+        String pathName = file1.getPath();
+        Path path = Paths.get(pathName);
+        long bytes = Files.size(path);
+        System.out.println("Size in bytes: " + bytes);
     }
 }
 
