@@ -43,7 +43,7 @@ public class MainTwo {
         iterate(animals);
 
 
-        //Task4 Write a Java program to iterate through all elements in a linked list starting at the specified position.
+        //Task3 Write a Java program to iterate through all elements in a linked list starting at the specified position.
         System.out.println("Iteration from specified element: ");
         iterateFromSpecPos(animals);
 
