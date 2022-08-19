@@ -1,4 +1,4 @@
-package com.collections;
+package com.array_list;
 
 import java.util.ArrayList;
 
@@ -35,12 +35,18 @@ public class Main {
         yearsOfOrbitalLaunches.add(2012);
         yearsOfOrbitalLaunches.add(2022);
 
+        //Iterating through the Array list
+        System.out.println("Years of orbital launches:");
+        for(Integer value: yearsOfOrbitalLaunches) {
+            System.out.print(value + ", ");
+        }
+        System.out.println();
         //Reversing the ArrayList
+        System.out.println("Print years of orbital launches from today to the past:");
         ArrayList<Integer> reversedArrLst = new ArrayList<>();
         for (int i = yearsOfOrbitalLaunches.size() - 1; i >= 0; i--) {
             reversedArrLst.add(yearsOfOrbitalLaunches.get(i));
         }
-        System.out.println("Print years of orbital launches from today to the past:");
         System.out.println(reversedArrLst.toString().replaceAll("[\\[\\]]", ""));
     }
 
@@ -56,9 +62,11 @@ public class Main {
         myTopListOfAnime.add(0, "Fullmetal Alhemist");
         System.out.println("Now it's perfect anime list:");
         System.out.println(myTopListOfAnime.toString().replaceAll("[\\[\\]]", ""));
+
     }
 
     public static void main(String[] args) {
+
         //Task1 Write a Java program to create a new array list, add some colors (string) and print out the collection.
         completeFirstTsk();
 
