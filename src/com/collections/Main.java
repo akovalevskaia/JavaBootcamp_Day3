@@ -18,7 +18,7 @@ public class Main {
         System.out.println(rainbow.toString().replaceAll("[\\[\\]]", ""));
     }
 
-    public static void iterateThroughTheList() {
+    public static void iterateAndReverse() {
         ArrayList<Integer> yearsOfOrbitalLaunches = new ArrayList<>();
         yearsOfOrbitalLaunches.add(1957);
         yearsOfOrbitalLaunches.add(1958);
@@ -35,7 +35,7 @@ public class Main {
         yearsOfOrbitalLaunches.add(2012);
         yearsOfOrbitalLaunches.add(2022);
 
-        System.out.println("Reverse the Array List:");
+        //Reversing the ArrayList
         ArrayList<Integer> reversedArrLst = new ArrayList<>();
         for (int i = yearsOfOrbitalLaunches.size() - 1; i >= 0; i--) {
             reversedArrLst.add(yearsOfOrbitalLaunches.get(i));
@@ -44,13 +44,30 @@ public class Main {
         System.out.println(reversedArrLst.toString().replaceAll("[\\[\\]]", ""));
     }
 
+    public static void insertElement() {
+        ArrayList<String> myTopListOfAnime = new ArrayList<>();
+        myTopListOfAnime.add("Beck");
+        myTopListOfAnime.add("Code Geass");
+        myTopListOfAnime.add("Great Teacher Onizuka");
+        myTopListOfAnime.add("Initial D");
+        System.out.println("My top anime list:");
+        System.out.println(myTopListOfAnime.toString().replaceAll("[\\[\\]]", ""));
+        System.out.println("Oops, I forgot to mention the favorite one");
+        myTopListOfAnime.add(0, "Fullmetal Alhemist");
+        System.out.println("Now it's perfect anime list:");
+        System.out.println(myTopListOfAnime.toString().replaceAll("[\\[\\]]", ""));
+    }
+
     public static void main(String[] args) {
         //Task1 Write a Java program to create a new array list, add some colors (string) and print out the collection.
         completeFirstTsk();
 
         //Task2 Write a Java program to iterate through all elements in an array list.
-        iterateThroughTheList();
+        //Task11 Write a program to reverse elements in a array list.
+        iterateAndReverse();
 
+        //Task3 White a Java program to insert an element into the array list at the first position.
+        insertElement();
 
     }
 }
