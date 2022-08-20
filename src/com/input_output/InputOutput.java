@@ -58,7 +58,15 @@ public class InputOutput {
         long mb = kb / 1024;
         System.out.println("Size in mb: " + mb);
         //Task10 Write a Java program to read contents from a file into byte array.
-        
+        FileInputStream justFile = new FileInputStream(file1);
+        byte[] arr = new byte[(int)file1.length()];
+        justFile.read(arr); // reading file content to byte array
+        System.out.println(new String(arr)); // content of file
+        System.out.println(Arrays.toString(arr)); // content of file in bytes
+        justFile.close(); // to avoid memory leakage
+
+
+
     }
 }
 
