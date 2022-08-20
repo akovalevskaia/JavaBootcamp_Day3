@@ -30,12 +30,12 @@ public class InputOutput {
         System.out.println("Exists: " + file.exists());
         //Task4 Write a Java program to check if a file or directory has read and write permission.
         assert file.isFile() && file.exists();
-        System.out.println("Permission of writing: " + file.canWrite());
-        System.out.println("Permission of reading: " + file.canRead());
+        System.out.println("Permission for writing: " + file.canWrite());
+        System.out.println("Permission for reading: " + file.canRead());
         //Task5 Write a Java program to check if given pathname is a directory or a file.
-        System.out.println("File path: " + file.getParent());
+        System.out.println("File path: " + file.getPath());
         //Task6 Write a Java program to compare two files lexicographically.
-        System.out.println("Comparison of ");
+        System.out.println("Comparison of files:");
         File file1 = new File("src/com/input_output/data/blink182_i_miss_you.txt");
         File file2 = new File("src/com/input_output/data/Funny_story");
         if (file1.compareTo(file2) == 0) {
@@ -48,12 +48,17 @@ public class InputOutput {
         System.out.println("Last modified time: " + date);
         //Task8  Write Java program to read input from java console.
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter something: ");
         System.out.println(reader.readLine());
         //Task9 Write a Java program to get file size in bytes, kb, mb.
-        String pathName = file1.getPath();
-        Path path = Paths.get(pathName);
-        long bytes = Files.size(path);
+        long bytes = file.length();
         System.out.println("Size in bytes: " + bytes);
+        long kb = bytes / 1024;
+        System.out.println("Size in kb: " + kb);
+        long mb = kb / 1024;
+        System.out.println("Size in mb: " + mb);
+        //Task10 Write a Java program to read contents from a file into byte array.
+        
     }
 }
 

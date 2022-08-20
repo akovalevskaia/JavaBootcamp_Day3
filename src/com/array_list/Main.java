@@ -1,6 +1,7 @@
 package com.array_list;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
@@ -42,12 +43,16 @@ public class Main {
         }
         System.out.println();
         //Reversing the ArrayList
-        System.out.println("Print years of orbital launches from today to the past:");
+        System.out.println("Print years of orbital launches from today to the past: the first way:");
         ArrayList<Integer> reversedArrLst = new ArrayList<>();
         for (int i = yearsOfOrbitalLaunches.size() - 1; i >= 0; i--) {
             reversedArrLst.add(yearsOfOrbitalLaunches.get(i));
         }
         System.out.println(reversedArrLst.toString().replaceAll("[\\[\\]]", ""));
+
+        System.out.println("Print years of orbital launches from today to the past: the second way:");
+        Collections.reverse(yearsOfOrbitalLaunches);
+        System.out.println(yearsOfOrbitalLaunches.toString().replaceAll("[\\[\\]]", ""));
     }
 
     public static void insertElement() {
@@ -76,6 +81,8 @@ public class Main {
 
         //Task3 White a Java program to insert an element into the array list at the first position.
         insertElement();
+
+
 
     }
 }
