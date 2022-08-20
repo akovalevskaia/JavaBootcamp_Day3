@@ -15,20 +15,10 @@ public class InputOutput {
         File file = new File("src/com/input_output/data");
         System.out.println(Arrays.toString(file.list()).replaceAll("[\\[\\]]", ""));
         //Task2 Write a Java program to get specific files by extensions from a specified folder.
-        System.out.println("Printing files with specific extensions: ");
-        String[] setOfFiles = file.list();
-        if (setOfFiles != null) {
-            for (String extension : setOfFiles) {
-                if (extension.endsWith(".txt")) {
-                    System.out.print(extension + " ");
-                }
-            }
-        }
-        System.out.println();
+        getSpecificFile(file);
         //Task3 Write a Java program to check if a file of directory specified by pathname exists or not.
         System.out.println("Exists: " + file.exists());
         //Task4 Write a Java program to check if a file or directory has read and write permission.
-        assert file.isFile() && file.exists();
         System.out.println("Permission for writing: " + file.canWrite());
         System.out.println("Permission for reading: " + file.canRead());
         //Task5 Write a Java program to check if given pathname is a directory or a file.
@@ -37,11 +27,7 @@ public class InputOutput {
         System.out.println("Comparison of files:");
         File file1 = new File("src/com/input_output/data/blink182_i_miss_you.txt");
         File file2 = new File("src/com/input_output/data/Funny_story");
-        if (file1.compareTo(file2) == 0) {
-            System.out.println("Equal.");
-        } else {
-            System.out.println("Not equal: " + file1.compareTo(file2));
-        }
+        compareTwoFiles(file1, file2);
         //Task7 Write a Java program to get last modified time of a file.
         Date date = new Date(file1.lastModified());
         System.out.println("Last modified time: " + date);
@@ -50,19 +36,9 @@ public class InputOutput {
         System.out.println("Enter something: ");
         System.out.println(reader.readLine());
         //Task9 Write a Java program to get file size in bytes, kb, mb.
-        long bytes = file.length();
-        System.out.println("Size in bytes: " + bytes);
-        long kb = bytes / 1024;
-        System.out.println("Size in kb: " + kb);
-        long mb = kb / 1024;
-        System.out.println("Size in mb: " + mb);
+        getSize(file);
         //Task10 Write a Java program to read contents from a file into byte array.
-        FileInputStream justFile = new FileInputStream(file1);
-        byte[] arr = new byte[(int) file1.length()];
-        justFile.read(arr); // reading file content to byte array
-        System.out.println(Arrays.toString(arr)); // content of file in bytes
-        System.out.println(new String(arr)); // content of file
-        justFile.close(); // to avoid memory leakage
+        readFromByte(file1);
         //Task11 Write a Java program to read a file content line by line.
         File file3 = new File("src/com/input_output/data/Simple_Man_LynyrdSkynyrd");
         FileReader fileReader = new FileReader(file3); //reads the file
@@ -110,13 +86,56 @@ public class InputOutput {
         System.out.println(stringBuilder);
 
         //Task16 write a Java program to append text to an existing file
+        appendText(file3);
+        //Task18 Write a Java program to find the longest word in a text file.
+        findTheLongestWord(file3);
+    }
+
+    public static void appendText(File file3) throws IOException {
         FileWriter fileWriter = new FileWriter(file3, true);
         String sequenceOfWords = "I like apple\n";
         fileWriter.write(sequenceOfWords);
         fileWriter.close();
 
-        //Task18 Write a Java program to find the longest word in a text file.
-        findTheLongestWord(file3);
+    }
+
+    public static void readFromByte(File file1) throws IOException {
+        FileInputStream justFile = new FileInputStream(file1);
+        byte[] arr = new byte[(int) file1.length()];
+        justFile.read(arr); // reading file content to byte array
+        System.out.println(Arrays.toString(arr)); // content of file in bytes
+        System.out.println(new String(arr)); // content of file
+        justFile.close(); // to avoid memory leakage
+    }
+
+    public static void getSize(File file) {
+        long bytes = file.length();
+        System.out.println("Size in bytes: " + bytes);
+        long kb = bytes / 1024;
+        System.out.println("Size in kb: " + kb);
+        long mb = kb / 1024;
+        System.out.println("Size in mb: " + mb);
+    }
+
+    public static void compareTwoFiles(File file1, File file2) {
+        if (file1.compareTo(file2) == 0) {
+            System.out.println("Equal.");
+        } else {
+            System.out.println("Not equal: " + file1.compareTo(file2));
+        }
+    }
+
+    public static void getSpecificFile(File file) {
+        System.out.println("Printing files with specific extensions: ");
+        String[] setOfFiles = file.list();
+        if (setOfFiles != null) {
+            for (String extension : setOfFiles) {
+                if (extension.endsWith(".txt")) {
+                    System.out.print(extension + " ");
+                }
+            }
+        }
+        System.out.println();
     }
 
     public static void findTheLongestWord(File file3) throws IOException {
