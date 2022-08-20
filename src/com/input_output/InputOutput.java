@@ -41,23 +41,40 @@ public class InputOutput {
         readFromByte(file1);
         //Task11 Write a Java program to read a file content line by line.
         File file3 = new File("src/com/input_output/data/Simple_Man_LynyrdSkynyrd");
-        FileReader fileReader = new FileReader(file3); //reads the file
-        BufferedReader bufferedReader = new BufferedReader(fileReader);// creates a buffering character input stream
-        StringBuffer stringBuffer = new StringBuffer(); // constructs a string buffer with no characters
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            stringBuffer.append(line);
-            stringBuffer.append("\n");
-        }
-        fileReader.close(); // close the stream to avoid memory leakage
-        System.out.printf("Contents of file:%n %s", stringBuffer);
-
+        readLineByLine(file3);
         //Task12 Write a Java program to read a plain text file.
         File file4 = new File("src/com/input_output/data/Coldplay_Scientist.txt");
         System.out.println("Reading text file: ");
         System.out.println(new String(Files.readAllBytes(file4.toPath())));
-        //Task13 13. Write a java program to read a file line by line and store it into a variable.
+        //Task13 Write a java program to read a file line by line and store it into a variable.
         //Task14 Write a Java program to store file content line by line into an array.
+        storeInArray(file2);
+        //Task17 Write a Java program to read first 3 lines from a file.
+        int lines = 3;
+        readFirstLines(file3, lines);
+        //Task16 write a Java program to append text to an existing file
+        File file5 = new File("src/com/input_output/data/file.txt");
+        appendText(file5);
+        //Task18 Write a Java program to find the longest word in a text file.
+        findTheLongestWord(file3);
+    }
+
+    public static void readFirstLines(File file3, int lines) throws IOException {
+        FileReader fr = new FileReader(file3);
+        BufferedReader br = new BufferedReader(fr);
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < lines; i++) {
+            String textOfLine = br.readLine();
+            stringBuilder.append(textOfLine);
+            stringBuilder.append("\n");
+        }
+        br.close();
+        System.out.println("Print three first line: ");
+        System.out.println(stringBuilder);
+
+    }
+
+    public static void storeInArray(File file2) throws IOException {
         FileReader fileReader2 = new FileReader(file2); //reads the file
         BufferedReader bufferedReader2 = new BufferedReader(fileReader2);// creates a buffering character input stream
         StringBuffer stringBuffer2 = new StringBuffer(); // constructs a string buffer with no characters
@@ -71,32 +88,26 @@ public class InputOutput {
         String[] arrayOfLines = line2.split("\n");
         System.out.println("Print from array: ");
         System.out.println(Arrays.toString(arrayOfLines).replaceAll("[\\[\\]]", ""));
-
-        //Task17 Write a Java program to read first 3 lines from a file.
-        FileReader fr = new FileReader(file3);
-        BufferedReader br = new BufferedReader(fr);
-        StringBuilder stringBuilder = new StringBuilder();
-        for(int i = 0; i < 3; i++) {
-            String textOfLine = br.readLine();
-            stringBuilder.append(textOfLine);
-            stringBuilder.append("\n");
-        }
-        br.close();
-        System.out.println("Print three first line: ");
-        System.out.println(stringBuilder);
-
-        //Task16 write a Java program to append text to an existing file
-        appendText(file3);
-        //Task18 Write a Java program to find the longest word in a text file.
-        findTheLongestWord(file3);
     }
 
-    public static void appendText(File file3) throws IOException {
-        FileWriter fileWriter = new FileWriter(file3, true);
+    public static void readLineByLine(File file3) throws IOException {
+        FileReader fileReader = new FileReader(file3); //reads the file
+        BufferedReader bufferedReader = new BufferedReader(fileReader);// creates a buffering character input stream
+        StringBuffer stringBuffer = new StringBuffer(); // constructs a string buffer with no characters
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            stringBuffer.append(line);
+            stringBuffer.append("\n");
+        }
+        fileReader.close(); // close the stream to avoid memory leakage
+        System.out.printf("Contents of file:%n %s", stringBuffer);
+    }
+
+    public static void appendText(File file5) throws IOException {
+        FileWriter fileWriter = new FileWriter(file5, true);
         String sequenceOfWords = "I like apple\n";
         fileWriter.write(sequenceOfWords);
         fileWriter.close();
-
     }
 
     public static void readFromByte(File file1) throws IOException {
